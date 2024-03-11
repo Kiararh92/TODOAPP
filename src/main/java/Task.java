@@ -4,7 +4,7 @@ import jakarta.persistence.*;
  * This class represents a task with a specific subject and id number.
  *
  * @author Kiara Howard
- * @version 1.0
+ * @version 4.0
  */
 @Entity
 @Table(name = "tasks")
@@ -19,11 +19,9 @@ public class Task {
      * Creates a task with the specific subject and task number.
      *
      * @param subject The body of the task
-     * @param taskNumber ID number of each task
      */
     public Task(String subject){
         this.subject = subject;
-        //this.taskNumber = taskNumber;
     }
 
     protected Task() {

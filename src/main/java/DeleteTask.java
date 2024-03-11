@@ -43,32 +43,6 @@ public class DeleteTask {
             System.out.println("Task # of task:");
             taskID = scanner.nextInt();
             hibernate.deleteTaskHib(taskID);
-            //Database only
-/*            Task task = hibernate.findTaskByNumber(taskID);
-            if (task != null) {
-                hibernate.deleteTaskHib(taskID);
-                System.out.println("Task deleted!");
-            } else {
-                System.out.println("Task not found.");
-            }*/
-
-//            Iterator<Task> iterator = list.getTasks().iterator();
-//            while (iterator.hasNext()) {
-//                Task task = iterator.next();
-//                if (task.getTaskNumber() == taskID) {
-//                    iterator.remove();
-//                    System.out.println("Task deleted!");
-//                    idList.remove(Integer.valueOf(taskID));
-//                    found = true;
-//                    //hibernate.deleteTaskHib(taskID);
-//                    break;
-//                } else {
-//                    found = false;
-//                }
-//            }
-//            if(!found) {
-//                System.out.println("Task not found.");
-//            }
             break;
         }
     }

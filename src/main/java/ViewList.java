@@ -3,7 +3,7 @@
  * as one.
  *
  * @author Kiara
- * @version 1.0
+ * @version 2.0
  *
  */
 public class ViewList {
@@ -25,11 +25,6 @@ public class ViewList {
      * Each task is printed with its task number followed by the task subject.
      */
     public void displayToDoList() {
-
-        System.out.println("To-Do List:");
-        for(Task currentTask : list.getTasks()) {
-            System.out.println(currentTask.getTaskNumber() + " " + currentTask.getTask());
-        }
         hibernate.viewTaskHib();
     }
 }

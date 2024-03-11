@@ -1,3 +1,4 @@
+import java.util.List;
 import Entity.Tasks;
 import jakarta.persistence.*;
 
@@ -9,14 +10,13 @@ import jakarta.persistence.*;
  * Professor: Professor Walauskis
  *
  * @author Kiara
- * @version 1.0
+ * @version 2.0
  */
 public class Hibernate {
     private EntityManagerFactory entityManagerFactory;
     private int taskNumber;
 
     public void hibernateInit() {
-        // creates an entitymanagerfactory and entityManager
         this.entityManagerFactory = Persistence.createEntityManagerFactory("default");
     }
 
@@ -36,14 +36,12 @@ public class Hibernate {
                 transaction.rollback();
             }
             entityManager.close();
-            //entityManagerFactory.close();
         }
 
     }
 
     public void deleteTaskHib(int taskNumber) {
         this.taskNumber = taskNumber;
-
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         // starts a transaction
@@ -57,13 +55,6 @@ public class Hibernate {
 
             int results = query.executeUpdate();
             System.out.println(results + " row(s) deleted.");
-
-//            Task task = (Task) entityManager.createNativeQuery("SELECT t FROM Tasks t WHERE t.taskNumber = :taskNumber", Task.class)
-//                    .setParameter("taskNumber", taskNumber)
-//                    .getSingleResult();
-//
-//            System.out.println(taskNumber);
-//            entityManager.remove(entityManager.contains(task) ? task : entityManager.merge(task));
 
             transaction.commit();
             //cleans up resources
@@ -81,26 +72,32 @@ public class Hibernate {
     public void viewTaskHib() {
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        // starts a transaction
-        EntityTransaction transaction = entityManager.getTransaction();
 
         try {
-            transaction.begin();
+
+            //counts the total amount of tasks on a list.
             Query totalTaskQuery = entityManager.createNativeQuery("SELECT COUNT(*) FROM Tasks");
             Number totalTasks = (Number) totalTaskQuery.getSingleResult();
-            //totalTaskQuery.executeUpdate();
             System.out.println("There are currently a total of " + totalTasks + " tasks on the To-Do List.");
 
+            //Selecting all task and output results
+            TypedQuery<Task> query = entityManager.createQuery("SELECT t FROM Task t", Task.class);
+            List<Task> tasks = query.getResultList();
 
-            //entityManager.persist(task);
-            transaction.commit();
-            //cleans up resources
-        }finally {
-            if (transaction.isActive()) {
-                transaction.rollback();
+            //Checking if the list is empty
+            if(tasks.isEmpty()) {
+                System.out.println("No task on this To-Do List.");
+            } else {
+                System.out.println("Listing all the tasks: ");
+                for(Task task : tasks) {
+                    System.out.println(task.getTaskNumber() + ":" + " " + task.getTask());
+                }
             }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
             entityManager.close();
-            //entityManagerFactory.close();
         }
 
     }
