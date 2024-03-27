@@ -16,6 +16,8 @@ import jakarta.persistence.*;
  */
 public class Hibernate {
     private EntityManagerFactory entityManagerFactory;
+
+    public List<Task> tasks;
     private int taskNumber;
 
     public void hibernateInit() {
@@ -101,7 +103,39 @@ public class Hibernate {
         } finally {
             entityManager.close();
         }
+    }
 
+    //copy of viewTaskHib method but a web version that returns task objects. testing.
+    public List<Task> viewTaskHibWeb(){
+
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        try {
+
+            Query totalTaskQuery = entityManager.createNativeQuery("SELECT COUNT(*) FROM Tasks");
+            Number totalTasks = (Number) totalTaskQuery.getSingleResult();
+            System.out.println("There are currently a total of " + totalTasks + " tasks on the To-Do com.spring24.todoapp.List.");
+
+            //Selecting all task and output results
+            TypedQuery<Task> query = entityManager.createQuery("SELECT t FROM Task t", Task.class);
+            tasks = query.getResultList();
+
+            //Checking if the list is empty
+            if(tasks.isEmpty()) {
+                System.out.println("No task on this To-Do com.spring24.todoapp.List.");
+            } else {
+                System.out.println("Listing all the tasks: ");
+                for(Task task : tasks) {
+                    System.out.println(task.getTaskNumber() + ":" + " " + task.getTask());
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }finally {
+            entityManager.close();
+        }
+         return tasks;
     }
 
     public void close() {

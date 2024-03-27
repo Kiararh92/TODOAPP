@@ -49,7 +49,7 @@ public class TaskNumber {
     /**
      * Retrieves the current ID number.
      *
-     * @return the unique ID number to be assigned as the com.spring24.todoapp.TaskNumber
+     * @return the unique ID number to be assigned as the TaskNumber
      */
     public int getCurrentID() {
         return currentID;

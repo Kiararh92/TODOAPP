@@ -19,9 +19,9 @@ public class DeleteTask {
 
 
     /**
-     * Delete a task via com.spring24.todoapp.Task Number.
+     * Delete a task via Task Number.
      *
-     * @param list com.spring24.todoapp.List object that contains the task objects
+     * @param list List object that contains the task objects
      * @param idList An ArrayList of taskNumbers
      */
     public DeleteTask(List list, ArrayList<Integer> idList, Hibernate hibernate) {
@@ -41,7 +41,7 @@ public class DeleteTask {
 
         while(true) {
             System.out.println("Delete an task:");
-            System.out.println("com.spring24.todoapp.Task # of task:");
+            System.out.println("Task # of task:");
             taskID = scanner.nextInt();
             hibernate.deleteTaskHib(taskID);
             break;

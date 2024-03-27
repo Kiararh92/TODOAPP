@@ -47,10 +47,10 @@ public class Menu {
 
         while(true) {
 
-            System.out.println("com.spring24.todoapp.Menu");
+            System.out.println("Menu");
             System.out.println("1. Add an item");
             System.out.println("2. Delete an item");
-            System.out.println("3. View com.spring24.todoapp.List");
+            System.out.println("3. View List");
             System.out.println("4. Exit");
             System.out.println("Enter your choice: ");
 
@@ -60,9 +60,8 @@ public class Menu {
 
                 case 1:
                     //  Option 1
-                    addTask.addTask();
-//                    String subject = null;
-//                    addTask.addTask(subject);
+                    String subject = "none";
+                    addTask.addTask(subject);
                     break;
 
                 case 2:

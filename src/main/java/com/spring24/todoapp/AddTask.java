@@ -30,12 +30,14 @@ public class AddTask {
      * Creates a new task via user-input.
      * Assigns a task number for that specific task.
      */
-    public void addTask(){
+    public void addTask(String subject){
+        //if subject is null or empty, prompt console input.
+        if (subject == null || subject.isEmpty() || subject.equals("none")) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Add an new task:");
+            subject = scanner.nextLine();
+        }
 
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Add an new task:");
-        String subject = scanner.nextLine();
         generator.assignID();
         int taskNumber = generator.getCurrentID();
         Task task = new Task(subject);
