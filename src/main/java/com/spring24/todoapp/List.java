@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @author Kiara
  * @version 3.0
  */
-public class List {
+public class List<T> {
     public ArrayList<Task> ToDoList;
 
     /**

@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <servlet>
-        <servlet-name>ViewListServlet</servlet-name>
-        <servlet-class>com.servlets.ViewListServlet</servlet-class>
+        <servlet-name>ToDoServlet</servlet-name>
+        <servlet-class>com.servlets.ToDoServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ViewListServlet</servlet-name>
-        <url-pattern>/ViewListServlet</url-pattern>
+        <servlet-name>ToDoServlet</servlet-name>
+        <url-pattern>/ToDoServlet</url-pattern>
     </servlet-mapping>
     <listener>
         <listener-class>com.servlets.WebInitializer</listener-class>

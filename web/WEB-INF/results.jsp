@@ -31,7 +31,7 @@
     </tbody>
 </table>
 
-<form name="returnForm" action="index.jsp">
+<form name="returnForm" action="../../src/webapp/index.jsp">
     <input type="submit" value="Return" name="return"/>
 </form>
 

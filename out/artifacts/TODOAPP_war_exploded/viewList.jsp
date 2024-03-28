@@ -1,40 +1,35 @@
-<%-- testing jsp with ViewListServlet --%>
+<%@ page import="com.spring24.todoapp.*" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>View Current To-Do List</title>
+    <title>All Tasks</title>
 </head>
-
+<%
+    List<Task> tasks = (List<Task>) request.getAttribute("tasks");
+%>
 <body>
-<h2>To-Do List</h2>
+<h1>To-Do List</h1>
 
+<table border="1">
+    <tbody>
+    <tr>
+        <th>ID</th>
+        <th>Task</th>
+    </tr>
+    <% for (Task task : tasks) { %>
+    <tr>
+        <td><%= task.getTaskNumber() %></td> <td><%= task.getTask() %></td> </tr>
+    <% } %>
+    </tbody>
+</table>
 
-<form action="ViewListServlet" method="get">
-    <input type="hidden" name="action" value="view" />
-
-    <%-- verifies if task attribute exists or not --%>
-
-    <table>
-
-        <tbody>
-
-        <tr>
-
-            <td>Task ID:<label>
-                <input type="text" name="taskNumber" value="" size="5"/>
-            </label></td>
-            <td>Task:<label>
-                <input type="text" name="task" value="" size="20"/>
-            </label></td>
-        </tr>
-
-        </tbody>
-    </table>
-
-    <input type="submit" value="View To-Do List" />
-
+<form name="returnForm" action="index.jsp">
+    <input type="submit" value="Return" name="return"/>
 </form>
 
 </body>

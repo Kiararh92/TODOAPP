@@ -1,6 +1,6 @@
 package com.spring24.todoapp;
 
-import com.servlets.ViewListServlet;
+import com.servlets.ToDoServlet;
 
 import java.util.ArrayList;
 /**
@@ -29,7 +29,7 @@ public class Main {
         ViewList viewList = new ViewList(list, hibernate);
 
         Menu menu = new Menu(ToDoList, idList, list, deleteTask, addTask, viewList, hibernate);
-        ViewListServlet addTServlet = new ViewListServlet();
+        ToDoServlet addTServlet = new ToDoServlet();
 
         hibernate.hibernateInit();
         // Starts the main application menu

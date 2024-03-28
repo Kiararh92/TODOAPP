@@ -7,6 +7,12 @@ import jakarta.servlet.annotation.WebListener;
 
 import java.util.ArrayList;
 
+/**
+ * This class represents the Servlet Context Listener for the To-Do Webapp.
+ *
+ * @author Kiara
+ * @version 2.0
+ */
 @WebListener
 public class WebInitializer implements ServletContextListener {
 
@@ -35,6 +41,5 @@ public class WebInitializer implements ServletContextListener {
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-
     }
 }

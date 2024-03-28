@@ -12,7 +12,7 @@ import jakarta.persistence.*;
  * Professor: Professor Walauskis
  *
  * @author Kiara
- * @version 2.0
+ * @version 3.0
  */
 public class Hibernate {
     private EntityManagerFactory entityManagerFactory;
@@ -109,6 +109,8 @@ public class Hibernate {
     public List<Task> viewTaskHibWeb(){
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
+        // starts a transaction
+        EntityTransaction transaction = entityManager.getTransaction();
         try {
 
             Query totalTaskQuery = entityManager.createNativeQuery("SELECT COUNT(*) FROM Tasks");
